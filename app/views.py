@@ -2,8 +2,20 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
+from app.models import Wheel
+
+
 def home(request):
-    return render(request, 'home/home.html')
+
+    # 获取轮播图数据
+    wheels = Wheel.objects.all()
+
+
+    data = {
+        'wheels':wheels
+    }
+
+    return render(request, 'home/home.html', context=data)
 
 
 def market(request):
