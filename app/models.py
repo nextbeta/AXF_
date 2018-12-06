@@ -67,3 +67,19 @@ class MainShow(models.Model):
 
     class Meta:
         db_table = 'axf_mainshow'
+
+
+# 分类 模型类
+# (typeid,typename,childtypenames,typesort)
+class Foodtype(models.Model):
+    # 分类ID
+    typeid = models.CharField(max_length=10)
+    # 分类名称
+    typename = models.CharField(max_length=100)
+    # 子类列表(子类间用 '#' 分割)
+    childtypenames = models.CharField(max_length=256)
+    # 子类排列顺序
+    typesort = models.IntegerField()
+
+    class Meta:
+        db_table = 'axf_foodtypes'
