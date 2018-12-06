@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-from app.models import Wheel, Nav, Mustbuy, Shop
+from app.models import Wheel, Nav, Mustbuy, Shop, MainShow
 
 
 def home(request):
@@ -23,6 +23,9 @@ def home(request):
     shopclass = shops[3:7]
     shopcommends = shops[7:11]
 
+    # 商品列表
+    mainShows = MainShow.objects.all()
+
     data = {
         'wheels':wheels,
         'navs': navs,
@@ -30,7 +33,8 @@ def home(request):
         'shophead': shophead,
         'shoptabs': shoptabs,
         'shopclass': shopclass,
-        'shopcommends': shopcommends
+        'shopcommends': shopcommends,
+        'mainShows': mainShows
     }
 
     return render(request, 'home/home.html', context=data)

@@ -89,5 +89,54 @@
                 {% endfor %}
             </ul>
         </div>
+
+{#      商品列表#}
+        <div class="main">
+            {% for mainShow in mainShows %}
+                <div class="main-wrapper">
+                    <div class="title">
+                        {{ mainShow.name }}
+                        <a href="#"> 更多 </a>
+                        <span></span>
+                    </div>
+
+                    <div class="headimg">
+                        <img src="{{ mainShow.img }}" alt="">
+                    </div>
+
+                    <div class="shoplist">
+                        <div class="shopitem">
+                            <a href="#">
+                                <img class="img" src="{{ mainShow.img1 }}" alt="">
+                                <span class="desc">{{ mainShow.longname1 }}</span>
+                                <span class="price">{{ mainShow.price1 }}</span>
+                                <span class="marketprice">{{ mainShow.marketprice1 }}</span>
+                            </a>
+                            <button><span>+</span></button>
+                        </div>
+
+                        <div class="shopitem">
+                            <a href="#">
+                                <img class="img" src="{{ mainShow.img2 }}" alt="">
+                                <span class="desc">{{ mainShow.longname2 }}</span>
+                                <span class="price">{{ mainShow.price2 }}</span>
+                                <span class="marketprice">{{ mainShow.marketprice2 }}</span>
+                            </a>
+                            <button><span>+</span></button>
+                        </div>
+
+                        <div class="shopitem">
+                            <a href="#">
+                                <img class="img" src="{{ mainShow.img3 }}" alt="">
+                                <span class="desc">{{ mainShow.longname3 }}</span>
+                                <span class="price">{{ mainShow.price3 }}</span>
+                                <span class="marketprice">{{ mainShow.marketprice3 }}</span>
+                            </a>
+                            <button><span>+</span></button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
