@@ -1,15 +1,20 @@
 $(function () {
 
-    console.log('home')
+    // 设置回到屏幕宽度
+    $('.home').width(innerWidth)
 
-    var topswiper = new Swiper('#top-swiper', {
+    var topswiper = new Swiper('#topSwiper', {
         pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
         slidesPerView: 1,
         paginationClickable: true,
         spaceBetween: 30,
         loop: true,
         autoplay : 3000,
+    });
+
+    var mustbuySwiper = new Swiper('#mustbuySwiper', {
+        spaceBetween: 3,
+        loop: true,
+        slidesPerView: 3,
     });
 })
