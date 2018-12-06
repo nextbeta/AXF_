@@ -16,3 +16,22 @@ class Base(models.Model):
 class Wheel(Base):
     class Meta:
         db_table = 'axf_wheel'
+
+
+# 导航 模型类
+class Nav(Base):
+    class Meta:
+        db_table = 'axf_nav'
+
+
+
+# 每日必购 模型类
+class Mustbuy(Base):
+    class Meta:
+        db_table = 'axf_mustbuy'
+
+
+# 商品部分(分类) 模型类
+class Shop(Base):
+    class Meta:
+        db_table = 'axf_shop'
