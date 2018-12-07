@@ -44,9 +44,14 @@ def marketbase(request):
 
 # 参数1: categoryid分类
 def market(request, categoryid):
-
     # 分类信息
     foodtypes = Foodtype.objects.all()
+
+    # 获取 分类下标  >>> typeIndex
+    # 没有时，默认为0  >>> 默认热销数据
+    typeIndex = int(request.COOKIES.get('typeIndex', 0))
+    # 根据下标   获取  分类id
+    categoryid = foodtypes[typeIndex].typeid
 
     # 商品信息
     # goodslist = Goods.objects.all()[0:10]

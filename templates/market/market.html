@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block extjs %}
+    <script src="{% static 'market/js/jquery.cookie.js' %}"></script>
     <script src="{% static 'market/js/market.js' %}"></script>
 {% endblock %}
 
@@ -20,7 +21,7 @@
         <div class="type-slider">
             <ul>
                 {% for foodtype in foodtypes %}
-                    <li>
+                    <li class="type-item">
                         <span></span>
                         <a href="{% url 'axf:market' foodtype.typeid  %}">
                             {{ foodtype.typename }}
