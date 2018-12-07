@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84a16f43-5422-4995-acfe-f9190ed6b172" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dir/DeepinScrot-0014.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/market/js/market.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/market/js/market.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/market/market.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/market/market.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,14 +48,14 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.27257094">
+    <splitter split-orientation="horizontal" split-proportion="0.58211523">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+                <state relative-caret-position="126">
+                  <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -64,8 +63,8 @@
           <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="150">
-                  <caret line="63" column="22" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="22" />
+                <state relative-caret-position="270">
+                  <caret line="81" column="30" lean-forward="true" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -76,8 +75,8 @@
           <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="147">
-                  <caret line="75" column="10" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="10" />
+                <state relative-caret-position="399">
+                  <caret line="119" column="14" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -85,18 +84,12 @@
           <file leaf-file-name="market.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/templates/market/market.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="670">
-                  <caret line="104" column="35" lean-forward="true" selection-start-line="104" selection-start-column="24" selection-end-line="104" selection-end-column="35" />
+                <state relative-caret-position="7">
+                  <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
                   <folding>
-                    <element signature="e#371#730#0#HTML" />
-                    <element signature="e#1275#1340#0#HTML" />
-                    <element signature="e#1466#1544#0#HTML" />
                     <element signature="e#1664#1752#0#HTML" />
-                    <element signature="e#1748#1851#0#HTML" />
-                    <element signature="e#2030#2115#0#HTML" />
                     <element signature="e#2269#2368#0#HTML" />
-                    <element signature="e#3227#3288#0#HTML" />
-                    <element signature="e#3638#3953#0#HTML" />
+                    <element signature="e#2705#2797#0#HTML" />
                   </folding>
                 </state>
               </provider>
@@ -115,15 +108,18 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="market.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="market.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/static/market/js/market.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="346">
-                  <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+                <state relative-caret-position="309">
+                  <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
                   <folding>
                     <element signature="e#135#151#0" />
                     <element signature="e#1118#1134#0" />
+                    <element signature="e#1286#1302#0" />
                     <element signature="e#1340#1356#0" />
+                    <element signature="e#1805#1821#0" />
+                    <element signature="e#1855#1871#0" />
                   </folding>
                 </state>
               </provider>
@@ -131,6 +127,15 @@
           </file>
           <file leaf-file-name="axf_foodtypes" pinned="false" current-in-tab="false">
             <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_foodtypes">
+              <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+                <state>
+                  <filtering enabled="true" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="axf_goods" pinned="false" current-in-tab="true">
+            <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_goods">
               <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
                 <state>
                   <filtering enabled="true" />
@@ -148,6 +153,11 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>childid</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -176,12 +186,12 @@
         <option value="$PROJECT_DIR$/templates/base/base_template.html" />
         <option value="$PROJECT_DIR$/app/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/console.sql" />
-        <option value="$PROJECT_DIR$/app/urls.py" />
         <option value="$PROJECT_DIR$/templates/base/base.html" />
-        <option value="$PROJECT_DIR$/app/views.py" />
         <option value="$PROJECT_DIR$/static/market/css/market.css" />
-        <option value="$PROJECT_DIR$/templates/market/market.html" />
         <option value="$PROJECT_DIR$/static/market/js/market.js" />
+        <option value="$PROJECT_DIR$/app/urls.py" />
+        <option value="$PROJECT_DIR$/app/views.py" />
+        <option value="$PROJECT_DIR$/templates/market/market.html" />
       </list>
     </option>
   </component>
@@ -308,11 +318,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32935917" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.1847988" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.19374068" />
       <window_info anchor="bottom" id="Database Console" order="7" weight="0.16244411" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.23129837" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.16938952" />
+      <window_info anchor="right" id="Database" order="3" weight="0.23301806" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -333,13 +343,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/home/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
@@ -540,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_shop">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/home/js/home.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -615,13 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="75" column="10" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/base/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -639,32 +628,8 @@
     <entry file="file://$PROJECT_DIR$/static/market/js/jquery.cookie.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dir/DeepinScrot-0014.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_foodtypes">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="63" column="22" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/market/css/market.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -673,32 +638,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/market/market.html">
+    <entry file="file://$PROJECT_DIR$/static/market/js/market.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="104" column="35" lean-forward="true" selection-start-line="104" selection-start-column="24" selection-end-line="104" selection-end-column="35" />
+        <state relative-caret-position="309">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
           <folding>
-            <element signature="e#371#730#0#HTML" />
-            <element signature="e#1275#1340#0#HTML" />
-            <element signature="e#1466#1544#0#HTML" />
-            <element signature="e#1664#1752#0#HTML" />
-            <element signature="e#1748#1851#0#HTML" />
-            <element signature="e#2030#2115#0#HTML" />
-            <element signature="e#2269#2368#0#HTML" />
-            <element signature="e#3227#3288#0#HTML" />
-            <element signature="e#3638#3953#0#HTML" />
+            <element signature="e#135#151#0" />
+            <element signature="e#1118#1134#0" />
+            <element signature="e#1286#1302#0" />
+            <element signature="e#1340#1356#0" />
+            <element signature="e#1805#1821#0" />
+            <element signature="e#1855#1871#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/market/js/market.js">
+    <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_shop">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_foodtypes">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://20fd4f31-a7d0-4f3a-8af2-2e47b5562ed6/schema/python1810axf/table/axf_goods">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+        <state relative-caret-position="126">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="119" column="14" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="81" column="30" lean-forward="true" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
           <folding>
-            <element signature="e#135#151#0" />
-            <element signature="e#1118#1134#0" />
-            <element signature="e#1340#1356#0" />
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/market/market.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+          <folding>
+            <element signature="e#1664#1752#0#HTML" />
+            <element signature="e#2269#2368#0#HTML" />
+            <element signature="e#2705#2797#0#HTML" />
           </folding>
         </state>
       </provider>

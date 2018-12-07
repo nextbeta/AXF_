@@ -23,7 +23,7 @@
                 {% for foodtype in foodtypes %}
                     <li class="type-item">
                         <span></span>
-                        <a href="{% url 'axf:market' foodtype.typeid  %}">
+                        <a href="{% url 'axf:market' foodtype.typeid 0 0 %}">
                             {{ foodtype.typename }}
                         </a>
                     </li>
@@ -66,9 +66,10 @@
                                         {% if goods.isxf %}
                                             <span class="xf">精选</span>
                                         {% endif %}
+                                        销量:{{ goods.productnum }}
                                     </p>
                                     <p class="specifics">
-                                        {{ goods.specifics }}
+                                        规格:{{ goods.specifics }}
                                     </p>
                                     <p class="price">
                                         <span class="now-price"> ￥{{ goods.price }} </span>
@@ -92,11 +93,10 @@
             <div class="bounce-view category-view">
                 <div class="bounce-wrapper">
                     {% for child in childtypelist %}
-                        <a href="#">
+                        <a href="{% url 'axf:market' categoryid child.childid 0 %}">
                             {{ child.childname }}
                         </a>
                     {% endfor %}
-
                 </div>
             </div>
 
@@ -104,16 +104,16 @@
             {#           综合排序#}
             <div class="bounce-view sort-view">
                 <div class="bounce-wrapper">
-                    <a href="#">
+                    <a href="{% url 'axf:market' categoryid childid 0 %}">
                         综合排序
                     </a>
-                    <a href="#">
+                    <a href="{% url 'axf:market' categoryid childid 1 %}">
                         销量排序
                     </a>
-                    <a href="#">
+                    <a href="{% url 'axf:market' categoryid childid 2 %}">
                         价格最低
                     </a>
-                    <a href="#">
+                    <a href="{% url 'axf:market' categoryid childid 3 %}">
                         价格最高
                     </a>
                 </div>

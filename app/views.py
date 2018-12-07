@@ -40,10 +40,13 @@ def home(request):
     return render(request, 'home/home.html', context=data)
 
 def marketbase(request):
-    return redirect('axf:market', 104749)
+    # 默认是热销榜， 全部分类， 综合排序
+    return redirect('axf:market', 104749, 0, 0)
 
-# 参数1: categoryid分类
-def market(request, categoryid):
+# 参数1: categoryid 分类
+# 参数2: childid 子类
+# 参数3: sortid 排序方式
+def market(request, categoryid, childid, sortid):
     # 分类信息
     foodtypes = Foodtype.objects.all()
 
@@ -69,13 +72,26 @@ def market(request, categoryid):
     # 商品信息
     # goodslist = Goods.objects.all()[0:10]
     # 商品信息 -- 分类
-    goodslist = Goods.objects.filter(categoryid=categoryid)
+    # goodslist = Goods.objects.filter(categoryid=categoryid)
+    if childid == '0':  # 全部分类
+        goodslist = Goods.objects.filter(categoryid=categoryid)
+    else:
+        goodslist = Goods.objects.filter(categoryid=categoryid).filter(childcid=childid)
 
+    # 0 综合排序
+    if sortid == '1':   # 销量排序
+        goodslist = goodslist.order_by('-productnum')
+    elif sortid == '2': # 价格最低
+        goodslist = goodslist.order_by('price')
+    elif sortid == '3': # 价格最高
+        goodslist = goodslist.order_by('-price')
 
     data = {
         'foodtypes': foodtypes,
         'goodslist': goodslist,
-        'childtypelist': childtypelist
+        'childtypelist': childtypelist,
+        'categoryid': categoryid,
+        'childid': childid
     }
 
     return render(request, 'market/market.html', context=data)
