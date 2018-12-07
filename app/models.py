@@ -83,3 +83,41 @@ class Foodtype(models.Model):
 
     class Meta:
         db_table = 'axf_foodtypes'
+
+
+# 商品 模型类
+# 分类 》》 子类
+class Goods(models.Model):
+    # 商品ID
+    productid = models.CharField(max_length=10)
+    # 商品图片
+    productimg = models.CharField(max_length=100)
+    # 商品名字
+    productname = models.CharField(max_length=100)
+    # 商品长名字
+    productlongname = models.CharField(max_length=100)
+    # 是否精选
+    isxf = models.IntegerField()
+    # 是否买一送一
+    pmdesc = models.IntegerField()
+    # 规格
+    specifics = models.CharField(max_length=100)
+    # 价格
+    price = models.DecimalField(max_digits=6, decimal_places=1)
+    # 超市价格
+    marketprice = models.DecimalField(max_digits=6, decimal_places=1)
+    # 分类id
+    categoryid = models.IntegerField()
+    # 子类id
+    childcid = models.IntegerField()
+    # 子类名称
+    childcidname = models.CharField(max_length=100)
+    # 详情页id
+    dealerid = models.CharField(max_length=10)
+    # 库存
+    storenums = models.IntegerField()
+    # 销售
+    productnum = models.IntegerField()
+
+    class Meta:
+        db_table = 'axf_goods'

@@ -40,7 +40,7 @@ footer .market dd {
     position: absolute;
     left:0;
     top: 0.6rem;
-    display: block;
+    display: none;
 }
 .market .type-slider ul .active span{
     display: block;
@@ -110,6 +110,7 @@ footer .market dd {
     display: block;
     width: 33.3%;
     float: left;
+    height: 100%;
 }
 .market .main-content .content-wrapper ul li a .goods-info{
     width: 66.6%;

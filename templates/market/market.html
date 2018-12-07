@@ -22,7 +22,7 @@
                 {% for foodtype in foodtypes %}
                     <li>
                         <span></span>
-                        <a href="#">
+                        <a href="{% url 'axf:market' foodtype.typeid  %}">
                             {{ foodtype.typename }}
                         </a>
                     </li>
@@ -49,6 +49,43 @@
         </nav>
 
 {#        商品列表#}
-        <div class="main-content"></div>
+        <div class="main-content">
+            <div class="content-wrapper">
+                <ul>
+                    {% for goods in goodslist %}
+{#                        一个个商品#}
+                        <li>
+                            <a href="#">
+                                <img class="goods-img" src="{{ goods.productimg }}" alt="">
+                                <div class="goods-info">
+                                    <p class="name">
+                                        {{ goods.productlongname }}
+                                    </p>
+                                    <p class="detailtag">
+                                        {% if goods.isxf %}
+                                            <span class="xf">精选</span>
+                                        {% endif %}
+                                    </p>
+                                    <p class="specifics">
+                                        {{ goods.specifics }}
+                                    </p>
+                                    <p class="price">
+                                        <span class="now-price"> ￥{{ goods.price }} </span>
+                                        <span class="market-price">
+                                            ￥{{ goods.marketprice }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="bt-wrapper">
+                                <span class="glyphicon glyphicon-minus"></span>
+                                <span class="num">10</span>
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}
