@@ -31,4 +31,74 @@ $(function () {
         // 记录 分类 下标    $(this).index()
         $.cookie('typeIndex', $(this).index(), {expires: 3, path: '/'})
     })
+    
+    
+    
+    // 全部类型 点击
+    var categoryShow = false
+    $('#category-bt').click(function () {
+        console.log('全部类型')
+        // 取反
+        categoryShow = !categoryShow
+        categoryShow ? categoryViewShow() : categoryViewHide()
+    })
+
+    
+    // 综合排序 点击
+    var sortShow = false
+    $('#sort-bt').click(function () {
+        console.log('综合排序')
+        sortShow = !sortShow
+        sortShow ? sortViewShow() : sortViewHide()
+    })
+
+
+    // 问题: (排序按钮中)点击两次才能显示
+    //      点击 ‘全部类型’ 按钮  >>>  ‘子类信息view’ 显示    【categoryShow>true】
+    //      点击 蒙层  >>>  ‘子类信息view’            隐藏
+    //      点击 ‘全部类型’ 按钮  >>>  ‘子类信息view’    不显示    【categoryShow>false】
+    //      点击 ‘全部类型’ 按钮  >>>  ‘子类信息view’    才显示
+
+
+    // 正常
+    //      点击 ‘全部类型’ 按钮  >>>  ‘子类信息view’ 显示    【categoryShow>true】
+    //      点击 蒙层  >>>  ‘子类信息view’            隐藏    【categoryShow>false】
+    //      点击 ‘全部类型’ 按钮  >>>  ‘子类信息view’    显示    【categoryShow>true】
+
+    // 蒙层
+    $('.bounce-view').click(function () {
+        categoryViewHide()
+        categoryShow = false
+
+        sortViewHide()
+        sortShow = false
+    })
+
+    function categoryViewShow() {
+        sortShow = false
+        sortViewHide()
+
+        $('.bounce-view.category-view').show()
+        // glyphicon-arrow-down
+        // 先移除 glyphicon-arrow-up，再添加glyphicon-arrow-down
+        $('#category-bt i').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down')
+    }
+
+    function categoryViewHide() {
+        $('.bounce-view.category-view').hide()
+        $('#category-bt i').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up')
+    }
+
+    function sortViewShow() {
+        categoryShow = false
+        categoryViewHide()
+
+        $('.bounce-view.sort-view').show()
+        $('#sort-bt i').removeClass('glyphicon-arrow-up').addClass('glyphicon-arrow-down')
+    }
+
+    function sortViewHide() {
+        $('.bounce-view.sort-view').hide()
+        $('#sort-bt i').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up')
+    }
 })

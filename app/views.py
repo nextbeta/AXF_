@@ -53,6 +53,19 @@ def market(request, categoryid):
     # 根据下标   获取  分类id
     categoryid = foodtypes[typeIndex].typeid
 
+    # 子类信息
+    childtypenames = foodtypes[typeIndex].childtypenames
+    childtypelist = []
+    for item in childtypenames.split('#'):
+        # 子类名称: 子类ID
+        # print(item)
+        temp = item.split(':')
+        dir = {
+            'childname': temp[0],
+            'childid': temp[1]
+        }
+        childtypelist.append(dir)
+
     # 商品信息
     # goodslist = Goods.objects.all()[0:10]
     # 商品信息 -- 分类
@@ -61,7 +74,8 @@ def market(request, categoryid):
 
     data = {
         'foodtypes': foodtypes,
-        'goodslist': goodslist
+        'goodslist': goodslist,
+        'childtypelist': childtypelist
     }
 
     return render(request, 'market/market.html', context=data)
