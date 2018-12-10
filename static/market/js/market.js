@@ -101,4 +101,26 @@ $(function () {
         $('.bounce-view.sort-view').hide()
         $('#sort-bt i').removeClass('glyphicon-arrow-down').addClass('glyphicon-arrow-up')
     }
+
+
+
+
+
+    ////////////////////////
+    // 默认不显示
+    $('.bt-wrapper .glyphicon-minus').hide()
+    $('.bt-wrapper .num').hide()
+    
+    // 加操作
+    $('.bt-wrapper .glyphicon-plus').click(function () {
+        // 发起ajax请求
+        // jQuery.get( url [, data ] [, success(data, textStatus, jqXHR) ] [, dataType ] )
+        $.get('/axf/addcart/', {'goodsid':''}, function (response) {
+            console.log(response)
+            if (response.status == -1){     // 未登录，直接跳转到登录
+                // DOM  BOM
+                window.open('/axf/login/', target='_self')
+            }
+        })
+    })
 })

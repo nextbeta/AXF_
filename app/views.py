@@ -1,7 +1,7 @@
 import hashlib
 import random
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -129,13 +129,19 @@ def generate_token():
     return  md5.hexdigest()
 
 
+def generate_password(param):
+    md5 = hashlib.md5()
+    md5.update(param.encode('utf-8'))
+    return md5.hexdigest()
+
+
 def register(request):
     if request.method == 'GET':
         return render(request, 'mine/register.html')
     elif request.method == 'POST':
         user = User()
         user.email = request.POST.get('email')
-        user.password = request.POST.get('password')
+        user.password = generate_password(request.POST.get('password'))
         user.name = request.POST.get('name')
         user.phone = request.POST.get('phone')
 
@@ -145,3 +151,64 @@ def register(request):
         request.session['token'] = user.token
 
         return redirect('axf:mine')
+
+
+def checkemail(request):
+
+    # 邮箱
+    email = request.GET.get('email')
+
+    users = User.objects.filter(email=email)
+    if users.exists():
+        return JsonResponse({'msg': '账号已被占用!', 'status': 0})
+    else:
+        return JsonResponse({'msg': '账号是可以使用!', 'status': 1})
+
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, 'mine/login.html')
+    elif request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        print(generate_password(password))
+
+        try:
+            # 不存在，会抛出异常
+            # 多个时，会抛出异常　【email是唯一约束】
+            user = User.objects.get(email=email)
+            if user.password == generate_password(password):
+                user.token = generate_token()
+                user.save()
+                request.session['token'] = user.token
+                return redirect('axf:mine')
+            else:
+                return render(request, 'mine/login.html', context={'p_err': '密码错误'})
+        except:
+            return render(request, 'mine/login.html', context={'u_err': '账号不存在'})
+
+
+def logout(request):
+    request.session.flush()
+    return redirect('axf:mine')
+
+
+def addcart(request):
+    print('添加购物车请求')
+    # 获取token  >> user
+    token = request.session.get('token')
+
+    data = {}
+
+    if token:   # 登录
+        # 获取用户
+        user = User.objects.get(token=token)
+
+    else:   # 没登录
+        # ajax操作中，不能重定向
+        # ajax异步请求操作，数据的传输
+        # 即ajax请求，如果想页面跳转(服务器重定向不了)，客户端处理
+        # return redirect('axf:login')
+        data['msg'] = '请登录后操作!'
+        data['status'] = -1
+        return JsonResponse(data)

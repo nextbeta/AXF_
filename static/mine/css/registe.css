@@ -24,6 +24,9 @@
 .red{
     color: red;
 }
+.green{
+    color: green;
+}
 
 #password .glyphicon-ok,
 #password-d .glyphicon-ok{
