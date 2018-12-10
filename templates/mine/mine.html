@@ -22,7 +22,9 @@
             <div class="user-content">
                 <p>
                     <span class="glyphicon glyphicon-piggy-bank"></span>
-                    {{ name | default:'未登录' }}
+                    <a href="{% url 'axf:login' %}">
+                        {{ name | default:'未登录' }}
+                    </a>
                 </p>
                 <p style="color: yellow">
                     <span class="glyphicon glyphicon-king"></span>
@@ -147,9 +149,13 @@
                     </li>
                 </ul>
             </section>
-            <section class="quit">
-                <a href="#"> 退出登录 </a>
-            </section>
+
+            {% if name %}
+                <section class="quit">
+                    <a href="{% url 'axf:logout' %}"> 退出登录 </a>
+                </section>
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

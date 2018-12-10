@@ -129,7 +129,7 @@ class User(models.Model):
     # 邮箱登录
     email = models.CharField(max_length=40, unique=True)
     # 密码
-    password = models.CharField(max_length=20)
+    password = models.CharField(max_length=256)
     # 名字
     name = models.CharField(max_length=40)
     # 手机号
@@ -143,3 +143,17 @@ class User(models.Model):
 
     class Meta:
         db_table = 'axf_user'
+
+# 购物车　模型类
+class Cart(models.Model):
+    # 用户
+    user = models.ForeignKey(User)
+    # 商品
+    goods = models.ForeignKey(Goods)
+    # 商品个数
+    number = models.IntegerField()
+    # 是否选中
+    isselect = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = 'axf_cart'
