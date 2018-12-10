@@ -25,7 +25,7 @@ SECRET_KEY = 'k!)+x#kcmpm^zrgn=6%emv1w4$@jljhy0%03__bzsp3pa3xo22'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,11 +76,13 @@ WSGI_APPLICATION = 'Python1810Axf.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': {    # mysql
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python1810axf',
-        'USER': 'root',
-        'PASSWORD': '123456'
+        'NAME': 'beta_axf', # 数据库名称(手动创建)
+        'USER': 'root', # 用户名
+        'PASSWORD': '123',   # 密码
+        'HOST': '47.107.141.202',    # 主机
+        'PORT': '3306',         # 端口号
     }
 }
 
