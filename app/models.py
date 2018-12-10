@@ -121,3 +121,25 @@ class Goods(models.Model):
 
     class Meta:
         db_table = 'axf_goods'
+
+
+
+# 用户 模型类
+class User(models.Model):
+    # 邮箱登录
+    email = models.CharField(max_length=40, unique=True)
+    # 密码
+    password = models.CharField(max_length=20)
+    # 名字
+    name = models.CharField(max_length=40)
+    # 手机号
+    phone = models.CharField(max_length=20)
+    # 头像
+    img = models.CharField(max_length=40, default='axf.png')
+    # 等级
+    rank = models.IntegerField(default=1)
+    # 令牌
+    token = models.CharField(max_length=256)
+
+    class Meta:
+        db_table = 'axf_user'

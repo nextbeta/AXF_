@@ -1,8 +1,11 @@
+import hashlib
+import random
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods
+from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User
 
 
 def home(request):
@@ -98,12 +101,47 @@ def market(request, categoryid, childid, sortid):
 
 
 def cart(request):
+    # temp = str(random.randrange(1,36))
     return render(request, 'cart/cart.html')
+    # return HttpResponse('座位号: ' + temp)
 
 
 def mine(request):
-    return render(request, 'mine/mine.html')
+    # 获取用户信息
+    token = request.session.get('token')
+
+    data = {}
+
+    if token:
+        user = User.objects.get(token=token)
+        data['name'] = user.name
+        data['img'] = user.img
+        data['rank'] = user.rank
+
+    return render(request, 'mine/mine.html', context=data)
+
+
+import time
+def generate_token():
+    md5 = hashlib.md5()
+    temp = str(time.time()) + str(random.random())
+    md5.update(temp.encode('utf-8'))
+    return  md5.hexdigest()
 
 
 def register(request):
-    return render(request, 'mine/register.html')
+    if request.method == 'GET':
+        return render(request, 'mine/register.html')
+    elif request.method == 'POST':
+        user = User()
+        user.email = request.POST.get('email')
+        user.password = request.POST.get('password')
+        user.name = request.POST.get('name')
+        user.phone = request.POST.get('phone')
+
+        # 状态保持
+        user.token = generate_token()
+        user.save()
+        request.session['token'] = user.token
+
+        return redirect('axf:mine')

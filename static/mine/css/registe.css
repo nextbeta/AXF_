@@ -17,6 +17,21 @@
     display: none;
 }
 
+.help{
+    font-size: 0.8rem;
+    color: gray;
+}
+.red{
+    color: red;
+}
+
+#password .glyphicon-ok,
+#password-d .glyphicon-ok{
+    background: green;
+    color: white;
+    display: none;
+}
+
 #subButton {
     width: 100%;
 }

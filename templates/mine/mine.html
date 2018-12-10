@@ -17,16 +17,16 @@
     <div class="mine">
         <div class="user-wrapper">
             <div class="user-img">
-                <img src="{% static 'mine/img/axf.png' %}" alt="">
+                <img src="/static/mine/img/{{ img | default:'axf.png' }}" alt="">
             </div>
             <div class="user-content">
                 <p>
                     <span class="glyphicon glyphicon-piggy-bank"></span>
-                    骑猪去上学
+                    {{ name | default:'未登录' }}
                 </p>
                 <p style="color: yellow">
                     <span class="glyphicon glyphicon-king"></span>
-                    超级VIP
+                    等级: {{ rank | default:'无等级' }}
                 </p>
 
                 <a class="register" href="{% url 'axf:register' %}">注册</a>
