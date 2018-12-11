@@ -110,8 +110,21 @@ def market(request, categoryid, childid, sortid):
 
 
 def cart(request):
+    token = request.session.get('token')
+    if token:
+        user = User.objects.get(token=token)
+        carts = Cart.objects.filter(user=user).exclude(number=0)
+
+        data = {
+            'carts': carts
+        }
+
+        return render(request, 'cart/cart.html', context=data)
+    else:
+        return redirect('axf:login')
+
     # temp = str(random.randrange(1,36))
-    return render(request, 'cart/cart.html')
+
     # return HttpResponse('座位号: ' + temp)
 
 
@@ -262,6 +275,47 @@ def subcart(request):
         'msg': '购物车删减成功',
         'status': 1,
         'number': cart.number
+    }
+
+    return JsonResponse(data)
+
+
+def changecartstatus(request):
+    cartid = request.GET.get('cartid')
+
+    cart = Cart.objects.get(pk=cartid)
+    cart.isselect = not cart.isselect   # 取反
+    cart.save()
+
+    data = {
+        'msg': '修改状态成功',
+        'status': 1,
+        'isselect': cart.isselect
+    }
+
+    return JsonResponse(data)
+
+
+def changecartisall(request):
+    token = request.session.get('token')
+    user = User.objects.get(token=token)
+    carts = Cart.objects.filter(user=user)
+
+    # 全选/取消全选
+    isall = request.GET.get('isall')
+    if isall == 'true':
+        isall = True
+    else:
+        isall = False
+
+    for cart in carts:
+        cart.isselect = isall
+        cart.save()
+
+
+    data = {
+        'msg': '全选/取消全选',
+        'status': 1
     }
 
     return JsonResponse(data)
