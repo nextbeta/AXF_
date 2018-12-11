@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User
+from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User, Cart
 
 
 def home(request):
@@ -89,12 +89,21 @@ def market(request, categoryid, childid, sortid):
     elif sortid == '3': # 价格最高
         goodslist = goodslist.order_by('-price')
 
+
+    # 获取购物车信息
+    token = request.session.get('token')
+    carts = []
+    if token:
+        user = User.objects.get(token=token)
+        carts = Cart.objects.filter(user=user)
+
     data = {
         'foodtypes': foodtypes,
         'goodslist': goodslist,
         'childtypelist': childtypelist,
         'categoryid': categoryid,
-        'childid': childid
+        'childid': childid,
+        'carts': carts
     }
 
     return render(request, 'market/market.html', context=data)
@@ -194,15 +203,38 @@ def logout(request):
 
 
 def addcart(request):
-    print('添加购物车请求')
     # 获取token  >> user
     token = request.session.get('token')
+
+    # 获取商品id
+    goodsid = request.GET.get('goodsid')
+    print(goodsid)
 
     data = {}
 
     if token:   # 登录
         # 获取用户
         user = User.objects.get(token=token)
+        # 获取商品
+        goods = Goods.objects.get(pk=goodsid)
+
+        # 1、 第一次添加的商品是不存在的，要往数据库中添加一条新记录
+        # 2、 商品已存在，即修改商品数量
+
+        # 判断需要添加的商品是否存在
+        carts = Cart.objects.filter(user=user).filter(goods=goods)
+        if carts.exists():  # 存在
+            cart = carts.first()
+            cart.number = cart.number + 1
+            cart.save()
+        else:   # 不存在
+            cart = Cart()
+            cart.user = user
+            cart.goods = goods
+            cart.number = 1
+            cart.save()
+
+        return JsonResponse({'msg':'{},添加购物车成功'.format(goods.productlongname), 'number':cart.number, 'status': 1})
 
     else:   # 没登录
         # ajax操作中，不能重定向
@@ -212,3 +244,24 @@ def addcart(request):
         data['msg'] = '请登录后操作!'
         data['status'] = -1
         return JsonResponse(data)
+
+
+def subcart(request):
+    token = request.session.get('token')
+    goodsid = request.GET.get('goodsid')
+
+    user = User.objects.get(token=token)
+    goods = Goods.objects.get(pk=goodsid)
+
+    # 找到对应的购物车 商品信息
+    cart = Cart.objects.filter(user=user).filter(goods=goods).first()
+    cart.number = cart.number - 1
+    cart.save()
+
+    data = {
+        'msg': '购物车删减成功',
+        'status': 1,
+        'number': cart.number
+    }
+
+    return JsonResponse(data)
