@@ -46,7 +46,7 @@
 
         <div class="bill">
             {% if order.status == 0 %}
-                <div class="bill-right">付款</div>
+                <div class="bill-right" id="pay" identifier="{{ order.identifier }}">付款</div>
             {% endif %}
         </div>
     </div>
