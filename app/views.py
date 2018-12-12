@@ -5,6 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from app.Alipay import alipay
 from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User, Cart, Order, OrderGoods
 
 
@@ -384,3 +385,34 @@ def orderlist(request, stu):
     orders = Order.objects.filter(user=user).filter(status=stu)
 
     return render(request, 'order/orderlist.html', context={'orders':orders})
+
+
+def appnotify(request):
+
+    body_str = request.body.decode('utf-8')
+
+    # out_trade_no =
+    # 获取对应的订单，修改状态
+
+    return JsonResponse({'msg':'success'})
+
+
+def returenview(request):
+    return redirect('axf:orderdetail',0)
+
+
+def pay(request):
+    identifier = request.GET.get('identifier')
+
+    # 支付地址
+    url = alipay.direct_pay(
+        subject='iPhone X[土豪金，64G]', # 订单标题
+        out_trade_no=identifier,    # 订单号[axf]
+        total_amount=9.9,   # 支付金额
+        return_url='http://112.74.55.3/axf/returenview/'
+    )
+
+    # 拼接支付网关
+    alipay_url = 'https://openapi.alipaydev.com/gateway.do?{data}'.format(data=url)
+
+    return JsonResponse({'alipay_url':alipay_url, 'status':1})
