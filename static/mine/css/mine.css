@@ -84,6 +84,12 @@ footer .mine dd {
 }
 .mine .other section ul li dl{
     text-align: center;
+    position: relative;
+}
+.mine .other section ul li dl .badge{
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
 }
 .mine .other section ul li dl dt{
     width:100%;
