@@ -155,6 +155,10 @@ class Cart(models.Model):
     # 是否选中
     isselect = models.BooleanField(default=True)
 
+    # 选择颜色
+    # 选择内存
+    # 选择版本
+
     class Meta:
         db_table = 'axf_cart'
 
@@ -176,7 +180,7 @@ class Order(models.Model):
     # 4 已评价
     status = models.IntegerField(default=0)
     # 订单号
-    idenrifier= models.CharField(max_length=256)
+    identifier= models.CharField(max_length=256)
 
 
 # 订单商品 模型类

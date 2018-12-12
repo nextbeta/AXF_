@@ -5,7 +5,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User, Cart
+from app.models import Wheel, Nav, Mustbuy, Shop, MainShow, Foodtype, Goods, User, Cart, Order, OrderGoods
 
 
 def home(request):
@@ -132,6 +132,7 @@ def mine(request):
     # 获取用户信息
     token = request.session.get('token')
 
+
     data = {}
 
     if token:
@@ -139,6 +140,12 @@ def mine(request):
         data['name'] = user.name
         data['img'] = user.img
         data['rank'] = user.rank
+
+        # 未付款、已付款...
+        orders = Order.objects.filter(user=user)
+        data['waitpay'] = orders.filter(status=0).count()
+        data['paydone'] = orders.filter(status=1).count()
+
 
     return render(request, 'mine/mine.html', context=data)
 
@@ -319,3 +326,61 @@ def changecartisall(request):
     }
 
     return JsonResponse(data)
+
+
+def generate_identifier():
+    temp = str(random.randrange(1000,10000)) + str(int(time.time())) + str(random.randrange(1000,10000))
+    return temp
+
+
+def generateorder(request):
+
+    token = request.session.get('token')
+    user = User.objects.get(token=token)
+
+    # 生成订单
+    order = Order()
+    order.user = user
+    order.identifier = generate_identifier()
+    order.save()
+
+    # 订单商品 【选中的商品，即isselect】
+    carts = Cart.objects.filter(user=user).filter(isselect=True)
+    for cart in carts:
+        orderGoods = OrderGoods()
+        orderGoods.order = order
+        orderGoods.goods = cart.goods
+        orderGoods.number = cart.number
+        orderGoods.save()
+
+        # 从购物车中移除
+        cart.delete()
+
+    data = {
+        'msg': '下单成功',
+        'status': 1,
+        'identifier': order.identifier
+    }
+
+    return JsonResponse(data)
+
+
+def orderdetail(request,identifier):
+    # identifier = request.GET.get('identifier')
+
+    # 找到对应的订单信息
+    order = Order.objects.get(identifier=identifier)
+
+    return render(request, 'order/orderdetail.html', context={'order':order})
+
+
+# stu : 订单状态 【显示】
+def orderlist(request, stu):
+    # 订单列表 【未付款、已付款....】
+
+    token = request.session.get('token')
+    user = User.objects.filter(token=token)
+
+    orders = Order.objects.filter(user=user).filter(status=stu)
+
+    return render(request, 'order/orderlist.html', context={'orders':orders})

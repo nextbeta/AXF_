@@ -78,4 +78,18 @@ $(function () {
         // 显示金额
         $('.bill .total b').html(parseInt(sum))
     }
+
+
+    // 下单
+    $('#generateorder').click(function () {
+        $.get('/axf/generateorder/', function (response) {
+            console.log(response)
+
+            // 订单详情
+            if (response.status == 1){
+                window.open('/axf/orderdetail/' + response.identifier + '/', target='_self')
+            }
+
+        })
+    })
 })
